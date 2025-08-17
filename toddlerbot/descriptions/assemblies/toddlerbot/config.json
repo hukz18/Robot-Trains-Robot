@@ -1,0 +1,10 @@
+{
+    "documentId": "ff1e767f256dd9c8abf2206a",
+    "outputFormat": "urdf",
+    "assemblyName": "toddlerbot",
+    "robotName": "toddlerbot",
+    "mergeSTLs": "all",
+    "mergeSTLsCollisions": true,
+    "simplifySTLs": "all",
+    "maxSTLSize": 1
+}

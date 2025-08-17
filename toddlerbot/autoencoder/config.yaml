@@ -1,0 +1,78 @@
+device: 0
+seed: 3407
+run_mode: train
+
+model:
+  n_embd: 1024
+  encoder_depth: 1
+  decoder_depth: 1
+  input_noise_factor: 0.001
+  latent_noise_factor: 0.01
+  is_vae: False
+  save_finetune_model: True
+  dynamics_type: "hyper" # "hyper" or "param"
+  num_splits: 1
+data:
+  batch_size: 32
+  num_workers: 0
+  time_str: "20250329_195335"
+  normalize_params: True
+
+train:
+  optimizer:
+    _target_: torch.optim.AdamW
+    lr: 1e-3
+    weight_decay: 5e-3
+
+  lr_scheduler:
+  finetune: False
+  pretrain_model: ''
+  latent_mode: 'film' # 'film' or 'concat'
+  train_mode: 'co-train' # 'co-train' or 'film-only'
+  autoencoder_loss_coef: 0.0
+  film_lr: 5e-5
+  autoencoder_lr: 1e-4
+  latent_lr: 5e-3 # 5e-3 for real-world exp, 4e-4 for sim
+  latent_decay: 0.2
+  latent_steps: 5000
+  latent_step_size: 500
+  adapt_all_lr: False
+  use_eval_latents: False
+  cotrain_actors: False # optimize_z related
+  cotrain_critic: False # optimize_z related
+  optimize_autoencoder: True
+  optimize_single_z: True
+  loss_func:
+    _target_: torch.nn.MSELoss
+    reduction: mean
+
+  trainer:
+    _target_: pytorch_lightning.trainer.Trainer
+    strategy: 'auto'
+    max_epochs: 100
+    check_val_every_n_epoch: True
+    val_check_interval: 
+    log_every_n_steps: 10
+    limit_val_batches: 1
+
+    enable_model_summary: false
+
+    callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      filename: "{epoch}-{val_loss:.4f}"
+      monitor: 'val_loss'
+      mode: 'min'
+      save_top_k: 3
+      verbose: true
+      # - _target_: pytorch_lightning.callbacks.EarlyStopping
+      # monitor: 'val_loss'
+      # min_delta: 0.0001
+      # patience: 10
+      # verbose: True
+      # mode: "min"
+
+hydra:
+  sweep:
+    dir: "results/dynamics_encoder_${now:%Y%m%d_%H%M%S}"
+  run:
+    dir: "results/dynamics_encoder_${now:%Y%m%d_%H%M%S}"

@@ -1,0 +1,10 @@
+{
+    "documentId": "1fb5d9a88ac086a053c4340b",
+    "outputFormat": "urdf",
+    "assemblyName": "sysID_2XC430",
+    "robotName": "sysID_2XC430",
+    "mergeSTLs": "all",
+    "mergeSTLsCollisions": true,
+    "simplifySTLs": "all",
+    "maxSTLSize": 1
+}

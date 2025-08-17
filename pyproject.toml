@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "toddlerbot"
+version = "0.1.0"
+description = "The software stack of Robot Trains Robot."
+authors = [
+    { name = "Kaizhe Hu", email = "hukaizhe@stanford.edu" },
+    { name = "Haochen Shi", email = "hshi74@stanford.edu" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+# license = { text = "MIT" }
+
+dependencies = [
+    "adafruit-circuitpython-bno08x",
+    "cmaes",
+    "colorama",
+    "control==0.9.4",
+    "diffusers==0.30.3",
+    "dotmap",
+    "dynamixel-sdk==3.7.31",
+    "gdown",
+    "gin-config",
+    "joblib",
+    "line_profiler",
+    "lightning",
+    "lz4",
+    "matplotlib",
+    "mediapy",
+    "moviepy==1.0.3",
+    "mujoco-mjx==3.2.4",
+    "mypy",
+    "numpy==1.26.4",
+    "onshape-to-robot==0.3.24",
+    "openai[realtime]",
+    "opencv-python==4.9.0.80",
+    "optuna",
+    "optuna-dashboard",
+    "psycopg2-binary",
+    "pupil_apriltags",
+    "pygame",
+    "pymunk",
+    "pytest",
+    "pyserial",
+    "PySide6",
+    "scipy",
+    "scikit-learn",
+    "seaborn",
+    "setuptools==75.6.0",
+    "sounddevice", 
+    "soundfile",
+    "soxr",
+    "textual",
+    "tqdm",
+    "transforms3d",
+    "wandb",
+    "zmq"
+]
+
+
+[project.optional-dependencies]
+docs = ["sphinx", "sphinx-tabs", "sphinx-design", "sphinx-autobuild", "furo"]
+test = ["torch==2.3.1", "torchvision==0.18.1"]
+linux = ["jax[cuda12]==0.4.28", "pynput", "tensorboard", "torch==2.3.1", "torchvision==0.18.1"]
+macos = ["torch==2.3.1", "torchvision==0.18.1"]
+windows = ["torch==2.3.1", "torchvision==0.18.1"]
+jetson = ["Jetson.GPIO", "pyaudio", "pydub"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.sphinx]
+build-dir = "docs/_build"
+source-dir = "docs"
