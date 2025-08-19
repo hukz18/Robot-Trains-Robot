@@ -1,10 +1,10 @@
 ![Robot-Trains-Robot-Logo](docs/_static/logo.png)
 ![Robot-Trains-Robot](docs/_static/banner.png)
 
-**[Paper](https://arxiv.org/abs/2502.00893)** |
+**[Paper](https://arxiv.org/abs/2508.12252)** |
 **[Website](https://robot-trains-robot.github.io/)** |
 **[Video](https://youtu.be/MhwVx_mlm6Q)** | 
-**[Tweet](https://x.com/HaochenShi74/status/1886599720279400732)** |
+**[Tweet](https://x.com/hkz222/status/1957632595220660442)** |
 
 Robot-Trains-Robot (RTR) is a novel framework where a robotic arm teacher actively supports and guides a humanoid robot student. The RTR system provides protection, learning
 schedule, reward, perturbation, failure detection, and automatic resets. It enables efficient long-term real-world humanoid training with minimal human intervention. 
